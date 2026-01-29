@@ -26,11 +26,11 @@ const columns = [
     }),
     columnHelper.accessor('total', {
         header: 'Amount',
-        cell: info => <span className="font-bold text-gray-900 dark:text-gray-100">${info.getValue().toFixed(2)}</span>,
+        cell: info => <span className="font-bold text-gray-900 dark:text-gray-100">₹{info.getValue().toFixed(2)}</span>,
     }),
     columnHelper.accessor('profit', {
         header: 'Profit',
-        cell: info => <span className="font-medium text-green-600 dark:text-green-400">${info.getValue().toFixed(2)}</span>,
+        cell: info => <span className="font-medium text-green-600 dark:text-green-400">₹{info.getValue().toFixed(2)}</span>,
     }),
     columnHelper.accessor('paymentMethod', {
         header: 'Method',
@@ -87,26 +87,28 @@ export default function Orders() {
         <div className="space-y-6">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
-                    <h1 className="text-3xl font-bold dark:text-gray-100">Sales History</h1>
-                    <p className="text-gray-500 text-sm mt-1">Review your store's transactions and profitability.</p>
+                    <h1 className="text-2xl lg:text-3xl font-black dark:text-gray-100 uppercase tracking-tight">Sales <span className="text-blue-600">Intelligence</span></h1>
+                    <p className="text-gray-500 text-[10px] mt-1 font-black uppercase tracking-[0.2em] opacity-60">Complete audit trail of store transactions & profitability</p>
                 </div>
-                <div className="flex gap-2">
-                    <Button variant="outline" size="sm">
+                <div className="flex gap-2 w-full md:w-auto">
+                    <Button variant="outline" size="sm" className="flex-1 md:flex-none h-11 px-6 rounded-xl font-bold uppercase tracking-widest text-[10px]">
                         <Download className="w-4 h-4 mr-2" />
-                        Export CSV
+                        Export Data
                     </Button>
                 </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <Card className="p-4 bg-blue-50/50 dark:bg-blue-900/10 border-blue-100 dark:border-blue-900/20">
-                    <p className="text-xs font-medium text-blue-600 dark:text-blue-400 uppercase tracking-wider">Filtered Revenue</p>
-                    <h3 className="text-xl font-bold dark:text-gray-100 mt-1">${totalPeriodRevenue.toFixed(2)}</h3>
-                </Card>
-                <Card className="p-4 bg-green-50/50 dark:bg-green-900/10 border-green-100 dark:border-green-900/20">
-                    <p className="text-xs font-medium text-green-600 dark:text-green-400 uppercase tracking-wider">Filtered Profit</p>
-                    <h3 className="text-xl font-bold dark:text-gray-100 mt-1">${totalPeriodProfit.toFixed(2)}</h3>
-                </Card>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <Card className="p-5 bg-blue-50/50 dark:bg-blue-900/10 border-blue-100 dark:border-blue-900/20 rounded-2xl">
+                        <p className="text-[10px] font-black text-blue-600 dark:text-blue-400 uppercase tracking-[0.15em] mb-1">Filtered Revenue</p>
+                        <h3 className="text-2xl font-black dark:text-gray-100 tabular-nums">₹{totalPeriodRevenue.toFixed(2)}</h3>
+                    </Card>
+                    <Card className="p-5 bg-green-50/50 dark:bg-green-900/10 border-green-100 dark:border-green-900/20 rounded-2xl">
+                        <p className="text-[10px] font-black text-green-600 dark:text-green-400 uppercase tracking-[0.15em] mb-1">Filtered Profit</p>
+                        <h3 className="text-2xl font-black dark:text-gray-100 tabular-nums">₹{totalPeriodProfit.toFixed(2)}</h3>
+                    </Card>
+                </div>
             </div>
 
             <div className="flex flex-wrap items-center gap-4 bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700">
@@ -214,19 +216,19 @@ export default function Orders() {
                             <div className="space-y-2 text-sm">
                                 <div className="flex justify-between text-gray-500">
                                     <span>Subtotal</span>
-                                    <span>${selectedOrder.subtotal.toFixed(2)}</span>
+                                    <span className="font-bold">₹{selectedOrder.subtotal.toFixed(2)}</span>
                                 </div>
                                 <div className="flex justify-between text-gray-500">
                                     <span>Tax (10%)</span>
-                                    <span>${selectedOrder.tax.toFixed(2)}</span>
+                                    <span className="font-bold">₹{selectedOrder.tax.toFixed(2)}</span>
                                 </div>
-                                <div className="flex justify-between font-bold text-lg pt-2 border-t dark:border-gray-700">
+                                <div className="flex justify-between font-black text-xl pt-4 border-t dark:border-gray-800 tracking-tighter">
                                     <span>Total</span>
-                                    <span className="text-blue-600 dark:text-blue-400">${selectedOrder.total.toFixed(2)}</span>
+                                    <span className="text-blue-600 dark:text-blue-400">₹{selectedOrder.total.toFixed(2)}</span>
                                 </div>
-                                <div className="flex justify-between text-green-600 text-xs font-medium pt-1">
-                                    <span>Profit from this sale</span>
-                                    <span>+${selectedOrder.profit.toFixed(2)}</span>
+                                <div className="flex justify-between text-green-600 text-[10px] font-black uppercase tracking-widest pt-1">
+                                    <span>Profit Yield</span>
+                                    <span>+₹{selectedOrder.profit.toFixed(2)}</span>
                                 </div>
                             </div>
                         </div>

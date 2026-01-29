@@ -92,17 +92,17 @@ export default function Reports() {
 
     return (
         <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
-            <div className="flex justify-between items-center">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div>
-                    <h1 className="text-3xl font-bold dark:text-gray-100">Business Reports</h1>
-                    <p className="text-gray-500 text-sm mt-1">Deep dive into your store's sales, profit margins, and inventory value.</p>
+                    <h1 className="text-2xl lg:text-3xl font-black dark:text-gray-100 uppercase tracking-tight">Business <span className="text-blue-600">Analytics</span></h1>
+                    <p className="text-gray-500 text-[10px] font-black uppercase tracking-[0.2em] mt-1 opacity-60">Insight-driven performance intelligence</p>
                 </div>
-                <div className="flex gap-2">
-                    <Button variant="outline" size="sm">
+                <div className="flex gap-2 w-full sm:w-auto">
+                    <Button variant="outline" size="sm" className="flex-1 sm:flex-none">
                         <Share2 className="w-4 h-4 mr-2" />
                         Share
                     </Button>
-                    <Button size="sm">
+                    <Button size="sm" className="flex-1 sm:flex-none">
                         <Printer className="w-4 h-4 mr-2" />
                         Print Page
                     </Button>
@@ -153,8 +153,8 @@ export default function Reports() {
                         </CardTitle>
                     </CardHeader>
                     <CardContent className="p-0">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div className="h-[280px] p-6">
+                        <div className="flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x dark:divide-gray-700/50">
+                            <div className="h-[280px] p-6 flex-1">
                                 <ResponsiveContainer width="100%" height="100%">
                                     <PieChart>
                                         <Pie
@@ -170,21 +170,30 @@ export default function Reports() {
                                                 <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                                             ))}
                                         </Pie>
-                                        <Tooltip contentStyle={{ backgroundColor: chartColors.tooltipBg, borderRadius: '16px', border: 'none', boxShadow: '0 20px 25px -5px rgb(0 0 0 / 0.1)' }} />
+                                        <Tooltip
+                                            contentStyle={{
+                                                backgroundColor: chartColors.tooltipBg,
+                                                borderRadius: '16px',
+                                                border: 'none',
+                                                boxShadow: '0 20px 25px -5px rgb(0 0 0 / 0.1)',
+                                                fontSize: '10px',
+                                                fontWeight: 900
+                                            }}
+                                        />
                                     </PieChart>
                                 </ResponsiveContainer>
                             </div>
-                            <div className="p-8 flex flex-col justify-center space-y-4 bg-gray-50/30 dark:bg-gray-900/10">
+                            <div className="p-6 lg:p-8 flex flex-col justify-center gap-3 lg:gap-4 bg-gray-50/30 dark:bg-gray-900/10 shrink-0 w-full md:w-64">
                                 {paymentData.map((p, i) => (
                                     <div key={p.name} className="flex items-center justify-between group">
                                         <div className="flex items-center gap-3">
                                             <div className="w-2 h-2 rounded-full" style={{ backgroundColor: COLORS[i % COLORS.length] }} />
                                             <div>
-                                                <p className="text-[11px] font-black text-gray-900 dark:text-gray-100 uppercase tracking-tight">{p.name}</p>
-                                                <p className="text-[9px] font-black text-gray-400 uppercase tracking-widest">{p.count} Transactions</p>
+                                                <p className="text-[10px] lg:text-[11px] font-black text-gray-900 dark:text-gray-100 uppercase tracking-tight">{p.name}</p>
+                                                <p className="text-[8px] lg:text-[9px] font-black text-gray-400 uppercase tracking-widest">{p.count} TX</p>
                                             </div>
                                         </div>
-                                        <span className="text-sm font-black text-gray-900 dark:text-gray-100 tabular-nums">₹{p.value.toLocaleString()}</span>
+                                        <span className="text-[11px] lg:text-sm font-black text-gray-900 dark:text-gray-100 tabular-nums">₹{p.value.toLocaleString()}</span>
                                     </div>
                                 ))}
                             </div>

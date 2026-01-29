@@ -292,32 +292,32 @@ export default function POSPage() {
     });
 
     return (
-        <div className="fixed inset-0 top-16 flex bg-gray-100 dark:bg-gray-900 overflow-hidden transition-colors duration-200">
+        <div className="flex flex-col lg:flex-row h-[calc(100dvh-64px)] lg:h-[calc(100vh-64px)] -m-4 lg:-m-8 bg-gray-100 dark:bg-gray-950 overflow-hidden transition-all duration-200">
             {/* Left: Product Grid */}
-            <div className="flex-1 flex flex-col min-w-0">
+            <div className="flex-1 flex flex-col min-w-0 h-[55dvh] lg:h-auto">
                 {/* Toolbar */}
-                <div className="p-4 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 flex gap-4 items-center relative transition-colors duration-200">
-                    <div className="relative w-80 flex-shrink-0">
+                <div className="p-3 lg:p-4 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 flex flex-col md:flex-row gap-3 lg:gap-4 items-center relative transition-colors duration-200 min-w-0 shrink-0">
+                    <div className="relative w-full md:w-72 lg:w-96 flex-shrink-0">
                         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                         <input
-                            className="w-full pl-9 pr-4 py-2.5 border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 rounded-xl text-sm text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow shadow-sm"
-                            placeholder="Scan Barcode or Search (Name/SKU)..."
+                            className="w-full pl-9 pr-4 py-2 border lg:py-2.5 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 rounded-xl text-sm text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all shadow-sm"
+                            placeholder="Scan or Search Product..."
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
                             autoFocus
                         />
                     </div>
-                    <div className="relative flex-1 overflow-hidden">
+                    <div className="relative w-full md:flex-1 min-w-0 overflow-hidden">
                         <div className="flex gap-2 overflow-x-auto pb-1 no-scrollbar pr-12">
                             {categories.map(cat => (
                                 <button
                                     key={cat}
                                     onClick={() => setCategory(cat)}
                                     className={cn(
-                                        "px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all whitespace-nowrap border-2",
+                                        "px-4 py-1.5 lg:py-2 rounded-xl text-[9px] lg:text-[10px] font-black uppercase tracking-widest transition-all whitespace-nowrap border-2 shrink-0",
                                         category === cat
                                             ? "bg-blue-600 border-blue-600 text-white shadow-lg shadow-blue-500/30"
-                                            : "bg-white dark:bg-gray-800 border-gray-100 dark:border-gray-700 text-gray-500 dark:text-gray-400 hover:border-blue-400 dark:hover:border-blue-500"
+                                            : "bg-white dark:bg-gray-800 border-gray-100 dark:border-gray-800 text-gray-500 dark:text-gray-400 hover:border-blue-400 dark:hover:border-blue-500"
                                     )}
                                 >
                                     {cat}
@@ -325,7 +325,7 @@ export default function POSPage() {
                             ))}
                         </div>
                         {/* Fade effect for horizontal scroll */}
-                        <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white dark:from-gray-800 to-transparent pointer-events-none" />
+                        <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white dark:from-gray-900 to-transparent pointer-events-none" />
                     </div>
                 </div>
 
@@ -334,7 +334,7 @@ export default function POSPage() {
                     {loading ? (
                         <div className="flex h-full items-center justify-center dark:text-gray-400 font-medium">Wait, fetching items...</div>
                     ) : (
-                        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
+                        <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 lg:gap-6">
                             {filteredProducts.map(product => (
                                 <ProductCard
                                     key={product.id}
@@ -354,7 +354,7 @@ export default function POSPage() {
             </div>
 
             {/* Right: Cart */}
-            <div className="w-96 flex-shrink-0 z-20">
+            <div className="w-full lg:w-96 flex-shrink-0 z-20 border-t lg:border-t-0 lg:border-l border-gray-200 dark:border-gray-800 h-[45dvh] lg:h-auto">
                 <CartSidebar onCheckout={() => setIsCheckoutOpen(true)} />
             </div>
 

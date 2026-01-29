@@ -50,15 +50,15 @@ export default function Purchases() {
         <div className="space-y-8 animate-in fade-in duration-500">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
-                    <h1 className="text-3xl font-black dark:text-gray-100 uppercase tracking-tight">Stock In <span className="text-blue-600">Operations</span></h1>
-                    <p className="text-gray-500 text-sm mt-1 font-medium uppercase tracking-widest opacity-60">Manage procurement & incoming logistics</p>
+                    <h1 className="text-2xl lg:text-3xl font-black dark:text-gray-100 uppercase tracking-tight">Stock In <span className="text-blue-600">Operations</span></h1>
+                    <p className="text-gray-500 text-[10px] mt-1 font-black uppercase tracking-[0.2em] opacity-60">Manage procurement & incoming logistics</p>
                 </div>
                 <Button
                     onClick={() => setIsModalOpen(true)}
-                    className="h-14 px-8 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-black uppercase tracking-widest shadow-xl shadow-blue-500/20 transition-all hover:-translate-y-1"
+                    className="w-full md:w-auto h-14 px-8 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-black uppercase tracking-widest shadow-xl shadow-blue-500/20 transition-all hover:-translate-y-1"
                 >
                     <PackageCheck className="w-5 h-5 mr-3" />
-                    Record New Shipment
+                    Record Shipment
                 </Button>
             </div>
 

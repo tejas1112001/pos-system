@@ -45,7 +45,7 @@ export default function Suppliers() {
             {/* 1. Dashboard Header */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
                 <div>
-                    <h1 className="text-3xl font-black dark:text-gray-100 uppercase tracking-tight">Supply Chain <span className="text-blue-600">Partners</span></h1>
+                    <h1 className="text-2xl lg:text-3xl font-black dark:text-gray-100 uppercase tracking-tight">Supply Chain <span className="text-blue-600">Partners</span></h1>
                     <p className="text-gray-500 text-[10px] mt-1 font-black uppercase tracking-[0.2em] opacity-60">Strategic vendor relationship & procurement directory</p>
                 </div>
                 <Button
@@ -53,10 +53,10 @@ export default function Suppliers() {
                         setEditingSupplier(undefined);
                         setIsModalOpen(true);
                     }}
-                    className="h-14 px-8 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-black uppercase tracking-widest shadow-xl shadow-blue-500/20 transition-all hover:-translate-y-1"
+                    className="w-full md:w-auto h-14 px-8 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-black uppercase tracking-widest shadow-xl shadow-blue-500/20 transition-all hover:-translate-y-1"
                 >
                     <Plus className="w-5 h-5 mr-3" />
-                    Enlist New Supplier
+                    Enlist Partner
                 </Button>
             </div>
 
